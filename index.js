@@ -27,7 +27,7 @@ function addNumbers(num1, num2) {
 /**
  * ### Challenge `sayGoodbye`
  * 
- * @instructions
+ * @instructions                                                                               //COMPLETE
  * This function should take an a name as an argument,
  * and return a string that says 'Goodbye, {name}. Have a great day.'
  * 
@@ -36,14 +36,15 @@ function addNumbers(num1, num2) {
  * the returned value should look like: 'Goodbye, Andy. Have a great day.'
  * 
 */
-function sayGoodbye(/* code here */) {
-  /* code here */
+function sayGoodbye(name) {
+  console.log("Goodbye, "+name+". Have a great day.");
 }
+sayGoodbye("Andy");
 
 /**
  * ### Challenge `temperatureCtoF`
  * 
- * @instructions
+ * @instructions                                                                               //COMPLETE
  * This function should take an a temperature in celsius as an argument,
  * and return the temperature in fahrenheit, rounded to the nearest whole number. 
  * 
@@ -54,9 +55,13 @@ function sayGoodbye(/* code here */) {
  * Hint 1: The formula for converting celsius to fahrenheit is t*9/5 + 32 where t is the temperature in celsius.
  * Hint 2: There is a very easy way to round numbers in JS. Do a google search to find out how. 
 */
-function temperatureCtoF(/* code here */) {
-  /* code here */
+function temperatureCtoF(cels) {
+  let fahr = cels*9/5 + 32;
+  fahr = fahr.toFixed(0);
+  console.log(fahr);
+  return fahr;
 }
+temperatureCtoF(24);
 
 /**
  * ### Challenge `temperatureInF`
@@ -75,11 +80,17 @@ function temperatureCtoF(/* code here */) {
  * 
  * Hint: You can call your `temperatureCtoF` function from inside `temperatureInF`.
 */
-function temperatureInF(/* code here */) {
-  /* code here */
+function temperatureInF(degree, result) {
+  if (result === 'C'){
+    temperatureCtoF();
+    console.log(degree + result);
+  }
+  else if (result === 'F'){
+    console.log(degree + result)
+  }
 }
 
-
+temperatureInF(24, 'C')
 /**
  * ### Challenge `makePersonObject`
  * 
@@ -96,9 +107,16 @@ function temperatureInF(/* code here */) {
  *   email: "leia@leia.com",
  * }
 */
-function makePersonObject(/* code here */) {
-  /* code here */
+function makePersonObject() {
+  let person = {
+    id:'id',
+    name:'name',
+    email:'email'
+  }
+console.log(person)
 }
+makePersonObject.id = '5'
+makePersonObject();
 
 /**
  * ### Challenge `getName`
