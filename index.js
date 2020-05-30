@@ -37,7 +37,7 @@ function addNumbers(num1, num2) {
  * 
 */
 function sayGoodbye(name) {
-  console.log("Complete: Goodbye, "+name+". Have a great day.");
+  console.log("Goodbye, "+name+". Have a great day.");
 }
 sayGoodbye("Andy");
 
@@ -58,10 +58,10 @@ sayGoodbye("Andy");
 function temperatureCtoF(celsius) {
   fahrenheit = (celsius*1.8) + 32;
   fahrenheit = fahrenheit.toFixed(0);
-  console.log("Complete: "+fahrenheit);
   return fahrenheit;
 }
 temperatureCtoF(24);
+console.log(temperatureCtoF(24))
 
 
 /**
@@ -83,7 +83,7 @@ temperatureCtoF(24);
 */
 function temperatureInF(degree, result) {
   if (result === 'C'){
-    console.log("Complete: "+temperatureCtoF(degree)+"F");
+    console.log(temperatureCtoF(degree)+"F");
   }
   else if (result === 'F'){
     console.log(degree + result);
@@ -141,7 +141,7 @@ makePersonObject(5, 'Leia', 'leia@leia.com');
  * the returned value should look like `Hello, my name is Leia`.
 */
 function getName(person) {
-  console.log("Complete: Hello, my name is "+person.name)
+  console.log("Hello, my name is "+person.name)
 }
 getName({id: 1, name: 'Leia', email: 'leia@leia.com'})
 
@@ -162,9 +162,11 @@ getName({id: 1, name: 'Leia', email: 'leia@leia.com'})
 */
 function appleIndex(fruit) {
   var appl = fruit.indexOf('apple');
-  console.log("Complete: "+appl)
+  return appl;
 }
 appleIndex(fruit = [ 'orange', 'grape', 'apple', 'banana', 'mango' ])
+console.log(appleIndex(fruit))
+
 /**
  * ### Challenge `isItAnApple`
  * 
@@ -185,15 +187,15 @@ function isItAnApple(fruit) {
   for(var i = 0; i < fruit.length; i++){
     if (fruit[i]=='apple'){
       itIsAnApple.push(true);
-  }
+    }
     else {
       itIsAnApple.push(false);
+    }
   }
-  }
-  console.log("Complete: "+itIsAnApple)
+  return itIsAnApple;
 }
-
 isItAnApple(fruit = [ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ])
+console.log(isItAnApple(fruit))
 
 
 // ⭐️ Example Test Data ⭐️
@@ -251,10 +253,11 @@ get3rdCar(inventory)
  * it will return `This is a Lincoln Navigator`.
 */
 function getCarInfoByIndex(inventory, index) {
-  var print = `Complete: This is a ${inventory[index].car_make} ${inventory[index].car_model}`
-  console.log(print)
+  var print = `This is a ${inventory[index].car_make} ${inventory[index].car_model}`
+  return print;
 }
 getCarInfoByIndex(inventory, 0)
+console.log(getCarInfoByIndex(inventory, 0))
 /**
  * ### Challenge `getLastCarInfo`
  * 
@@ -268,7 +271,7 @@ getCarInfoByIndex(inventory, 0)
 */
 
 function getLastCarInfo(inventory) {
-  var print = `Complete: This is a ${inventory[inventory.length-1].car_make}${inventory[inventory.length-1].car_model}`
+  var print = `This is a ${inventory[inventory.length-1].car_make}${inventory[inventory.length-1].car_model}`
   return print;
 }
 getLastCarInfo(data)
@@ -309,9 +312,12 @@ console.log(getModelYears(data))
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoById(/* code here */) {
-  /* code here */
+function getCarInfoById(inventory, index) {
+  var print = `This is a ${inventory[index].car_make} ${inventory[index].car_model}`
+  return print;
 }
+getCarInfoById(inventory, 0)
+console.log(getCarInfoById(inventory, 0))
 
 /**
  * ### Challenge `getOlderCars`
