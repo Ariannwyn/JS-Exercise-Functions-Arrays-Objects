@@ -117,7 +117,6 @@ function makePersonObject(id, name, email,) {
  }
 makePersonObject(5, 'Leia', 'leia@leia.com');
  
-
                                                   //Why doesn't this work??
 // function makePersonObject(person) {
 //   person.id = person[0];
@@ -198,7 +197,7 @@ isItAnApple(fruit = [ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ])
 
 
 // ⭐️ Example Test Data ⭐️
-
+var data = require('./data/inventory.js'); 
 var inventory = [
   { id: 1, car_make: "Lincoln", car_model: "Navigator", car_year: 2009 },
   { id: 2, car_make: "Mazda", car_model: "Miata MX-5", car_year: 2001 },
@@ -216,6 +215,8 @@ var inventory = [
   { id: 14, car_make: "Dodge", car_model: "Ram Van 1500", car_year: 1999 }
 ]
 
+
+
 /**
   * ### Example Array Challenge:
   * 
@@ -226,9 +227,11 @@ var inventory = [
   * NOTE: This example has been completed for you.
 **/
 function get3rdCar(inventory) {
-  const the3rd = inventory[2];
+  var the3rd = inventory[2];
   return `The is a ${the3rd.car_make} ${the3rd.car_model}`
+  
 }
+get3rdCar(inventory)
 
 // 👇 COMPLETE YOUR WORK BELOW 👇
 // 👇 COMPLETE YOUR WORK BELOW 👇
@@ -248,9 +251,10 @@ function get3rdCar(inventory) {
  * it will return `This is a Lincoln Navigator`.
 */
 function getCarInfoByIndex(inventory, index) {
-  /* code here */
+  var print = `Complete: This is a ${inventory[index].car_make} ${inventory[index].car_model}`
+  console.log(print)
 }
-
+getCarInfoByIndex(inventory, 0)
 /**
  * ### Challenge `getLastCarInfo`
  * 
@@ -262,10 +266,13 @@ function getCarInfoByIndex(inventory, index) {
  * For example, if getLastCarInfo is invoked passing the inventory inside /data/inventory.js,
  * it will return `This is a Lincoln Town Car`.
 */
-function getLastCarInfo(/* code here */) {
-  /* code here */
-}
 
+function getLastCarInfo(inventory) {
+  var print = `Complete: This is a ${inventory[inventory.length-1].car_make}${inventory[inventory.length-1].car_model}`
+  return print;
+}
+getLastCarInfo(data)
+console.log(getLastCarInfo(inventory))
 /**
  * ### Challenge `getModelYears`
  * 
@@ -275,9 +282,18 @@ function getLastCarInfo(/* code here */) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
-function getModelYears(/* code here */) {
-  /* code here */
+function getModelYears(data) {
+  allYears= []
+  for (var i = 0; i < data.length-1; i++) {
+    allYears.push(data[i].car_year);
+    }
+  return allYears;
 }
+getModelYears(data)
+console.log(getModelYears(data))
+
+
+
 
 /**
  * ### Challenge `getCarInfoById`
