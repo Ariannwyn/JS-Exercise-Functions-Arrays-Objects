@@ -27,7 +27,7 @@ function addNumbers(num1, num2) {
 /**
  * ### Challenge `sayGoodbye`
  * 
- * @instructions
+ * @instructions                                                                            
  * This function should take an a name as an argument,
  * and return a string that says 'Goodbye, {name}. Have a great day.'
  * 
@@ -36,14 +36,15 @@ function addNumbers(num1, num2) {
  * the returned value should look like: 'Goodbye, Andy. Have a great day.'
  * 
 */
-function sayGoodbye(/* code here */) {
-  /* code here */
+function sayGoodbye(name) {
+  console.log("Goodbye, "+name+". Have a great day.");
 }
+sayGoodbye("Andy");
 
 /**
  * ### Challenge `temperatureCtoF`
  * 
- * @instructions
+ * @instructions                                                                             
  * This function should take an a temperature in celsius as an argument,
  * and return the temperature in fahrenheit, rounded to the nearest whole number. 
  * 
@@ -54,9 +55,14 @@ function sayGoodbye(/* code here */) {
  * Hint 1: The formula for converting celsius to fahrenheit is t*9/5 + 32 where t is the temperature in celsius.
  * Hint 2: There is a very easy way to round numbers in JS. Do a google search to find out how. 
 */
-function temperatureCtoF(/* code here */) {
-  /* code here */
+function temperatureCtoF(celsius) {
+  fahrenheit = (celsius*1.8) + 32;
+  fahrenheit = fahrenheit.toFixed(0);
+  return fahrenheit;
 }
+temperatureCtoF(24);
+console.log(temperatureCtoF(24))
+
 
 /**
  * ### Challenge `temperatureInF`
@@ -75,11 +81,16 @@ function temperatureCtoF(/* code here */) {
  * 
  * Hint: You can call your `temperatureCtoF` function from inside `temperatureInF`.
 */
-function temperatureInF(/* code here */) {
-  /* code here */
+function temperatureInF(degree, result) {
+  if (result === 'C'){
+    console.log(temperatureCtoF(degree)+"F");
+  }
+  else if (result === 'F'){
+    console.log(degree + result);
+  }
 }
 
-
+temperatureInF(24, 'C')
 /**
  * ### Challenge `makePersonObject`
  * 
@@ -96,9 +107,25 @@ function temperatureInF(/* code here */) {
  *   email: "leia@leia.com",
  * }
 */
-function makePersonObject(/* code here */) {
-  /* code here */
-}
+function makePersonObject(id, name, email,) {
+  let person = { }
+  person.id = id;
+  person.name = name;
+  person.email = email;
+  console.log(person);  
+  return person;
+ }
+makePersonObject(5, 'Leia', 'leia@leia.com');
+ 
+                                                  //Why doesn't this work??
+// function makePersonObject(person) {
+//   person.id = person[0];
+//   person.name = person[1];
+//   person.email = person[2];
+//   return person;
+//  }
+// makePersonObject({5, 'Leia', 'leia@leia.com'});
+// console.log(makePersonObject(person))
 
 /**
  * ### Challenge `getName`
@@ -113,10 +140,10 @@ function makePersonObject(/* code here */) {
  * passing { id: 1, name: 'Leia', email: 'leia@leia.com` } as the argument,
  * the returned value should look like `Hello, my name is Leia`.
 */
-function getName(/* code here */) {
-  /* code here */
+function getName(person) {
+  console.log("Hello, my name is "+person.name)
 }
-
+getName({id: 1, name: 'Leia', email: 'leia@leia.com'})
 
 /**
  * ### Challenge `appleIndex`
@@ -133,9 +160,12 @@ function getName(/* code here */) {
  * passing in [ 'orange', 'grape', 'apple', 'banana', 'mango' ] as the argument,
  * the returned value should be: 2.
 */
-function appleIndex(/* code here */) {
-  /* code here */
+function appleIndex(fruit) {
+  var appl = fruit.indexOf('apple');
+  return appl;
 }
+appleIndex(fruit = [ 'orange', 'grape', 'apple', 'banana', 'mango' ])
+console.log(appleIndex(fruit))
 
 /**
  * ### Challenge `isItAnApple`
@@ -152,15 +182,24 @@ function appleIndex(/* code here */) {
  * passing in [ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ] as the argument,
  * the returned value should be: [ false, true, false, false, true, false ].
 */
-function isItAnApple(/* code here */) {
-  /* code here */
+function isItAnApple(fruit) {
+  itIsAnApple = []
+  for(var i = 0; i < fruit.length; i++){
+    if (fruit[i]=='apple'){
+      itIsAnApple.push(true);
+    }
+    else {
+      itIsAnApple.push(false);
+    }
+  }
+  return itIsAnApple;
 }
-
-
+isItAnApple(fruit = [ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ])
+console.log(isItAnApple(fruit))
 
 
 // ⭐️ Example Test Data ⭐️
-
+var data = require('./data/inventory.js'); 
 var inventory = [
   { id: 1, car_make: "Lincoln", car_model: "Navigator", car_year: 2009 },
   { id: 2, car_make: "Mazda", car_model: "Miata MX-5", car_year: 2001 },
@@ -178,6 +217,8 @@ var inventory = [
   { id: 14, car_make: "Dodge", car_model: "Ram Van 1500", car_year: 1999 }
 ]
 
+
+
 /**
   * ### Example Array Challenge:
   * 
@@ -188,9 +229,11 @@ var inventory = [
   * NOTE: This example has been completed for you.
 **/
 function get3rdCar(inventory) {
-  const the3rd = inventory[2];
+  var the3rd = inventory[2];
   return `The is a ${the3rd.car_make} ${the3rd.car_model}`
+  
 }
+get3rdCar(inventory)
 
 // 👇 COMPLETE YOUR WORK BELOW 👇
 // 👇 COMPLETE YOUR WORK BELOW 👇
@@ -210,9 +253,11 @@ function get3rdCar(inventory) {
  * it will return `This is a Lincoln Navigator`.
 */
 function getCarInfoByIndex(inventory, index) {
-  /* code here */
+  var print = `This is a ${inventory[index].car_make} ${inventory[index].car_model}`
+  return print;
 }
-
+getCarInfoByIndex(inventory, 0)
+console.log(getCarInfoByIndex(inventory, 0))
 /**
  * ### Challenge `getLastCarInfo`
  * 
@@ -224,10 +269,13 @@ function getCarInfoByIndex(inventory, index) {
  * For example, if getLastCarInfo is invoked passing the inventory inside /data/inventory.js,
  * it will return `This is a Lincoln Town Car`.
 */
-function getLastCarInfo(/* code here */) {
-  /* code here */
-}
 
+function getLastCarInfo(inventory) {
+  var print = `This is a ${inventory[inventory.length-1].car_make}${inventory[inventory.length-1].car_model}`
+  return print;
+}
+getLastCarInfo(data)
+console.log(getLastCarInfo(inventory))
 /**
  * ### Challenge `getModelYears`
  * 
@@ -237,9 +285,18 @@ function getLastCarInfo(/* code here */) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
-function getModelYears(/* code here */) {
-  /* code here */
+function getModelYears(data) {
+  allYears= []
+  for (var i = 0; i < data.length-1; i++) {
+    allYears.push(data[i].car_year);
+    }
+  return allYears;
 }
+getModelYears(data)
+console.log(getModelYears(data))
+
+
+
 
 /**
  * ### Challenge `getCarInfoById`
@@ -255,9 +312,12 @@ function getModelYears(/* code here */) {
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoById(/* code here */) {
-  /* code here */
+function getCarInfoById(inventory, index) {
+  var print = `This is a ${inventory[index].car_make} ${inventory[index].car_model}`
+  return print;
 }
+getCarInfoById(inventory, 0)
+console.log(getCarInfoById(inventory, 0))
 
 /**
  * ### Challenge `getOlderCars`
